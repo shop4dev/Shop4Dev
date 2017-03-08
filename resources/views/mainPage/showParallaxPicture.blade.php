@@ -37,11 +37,23 @@
 				</li>
 			</ul>
 			</li>
+			<li>
+				<label class="logo_label">
+					Shop4Dev
+					<p class="logo_p">
+						Professional way to promote your business
+					</p>
+				</label>
+			</li>
 		</ul>
 @endsection
 
-@section('script')
+@section ('info')
+        <div class="info"><a onclick="slide_down()">i</a></div>
+		<div id="myModal" class="modal"></div>
+@endsection
 
+@section('script')
     <script src="/js/parallax.js"></script>
     <script>
         // Pretty simple huh?
