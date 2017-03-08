@@ -49,7 +49,7 @@
 @endsection
 
 @section ('info')
-        <div class="info"><a onclick="slide_down()">i</a></div>
+        <div class="info" onclick="slide_down()">i</div>
 		<div id="myModal" class="modal"></div>
 @endsection
 
