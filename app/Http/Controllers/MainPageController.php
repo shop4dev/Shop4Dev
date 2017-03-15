@@ -8,7 +8,7 @@ class MainPageController extends Controller
 {
     public function parallax(){
         
-        return view('mainPage.showParallaxPicture');
+        return view('mainPage.main');
 
     }
 }
