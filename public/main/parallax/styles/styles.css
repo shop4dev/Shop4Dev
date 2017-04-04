@@ -330,10 +330,10 @@ img.Logo {
 
 .next{
   position: fixed;
-  margin: 23% 48%;
+  margin: 4% 48%;
   transition-duration: 0.2s;
   cursor: pointer;
-  top: 400px;
+  bottom: 0px;
 }
 
 .next:hover{

@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 
 class MainPageController extends Controller
 {
-    public function parallax(){
-        
+    public function parallax()
+    {
         return view('mainPage.main');
-
     }
 }
