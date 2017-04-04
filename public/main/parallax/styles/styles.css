@@ -60,17 +60,6 @@ input[type=checkbox]:checked + label:before {
   background: #00FFAA;
 }
 
-.container {
-  position: relative;
-  max-width: 600px;
-  /*margin: 0 auto;*/
-  padding: 5%;
-}
-
-/*.container--offset {
-  margin-left: 10%;
-}*/
-
 .scene {
   padding: 0;
   margin: 0;
@@ -313,8 +302,8 @@ img.Logo {
 }
 
 .info{
-  z-index: 2;
-      font-family: inherit;
+    z-index: 2;
+    font-family: inherit;
     font-size: 100px;
     text-align: center;
     padding: 4px 0;
@@ -337,6 +326,20 @@ img.Logo {
         transform: scale(1.1);
         /*color: #fff;*/
         background-color: #ff832e;
+}
+
+.next{
+  position: fixed;
+  margin: 23% 48%;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  top: 400px;
+}
+
+.next:hover{
+      -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
 }
 
 .modal {

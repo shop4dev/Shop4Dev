@@ -12,28 +12,41 @@
 	<link rel="stylesheet" type="text/css" href="/main/css/multilevelmenu.css" />
 	<link rel="stylesheet" type="text/css" href="/main/css/component.css" />
 	<link rel="stylesheet" type="text/css" href="/main/css/animations.css" />
+	<link rel="stylesheet" type="text/css" href="/main/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/main/css/navigation_bar.css">
 </head>
 <body style="background-color: #2f506a">
 
-	<div id="n1" style="width: 100%">
-		        
-		<!--<div id="myModal" class="modal"></div>-->
-		<div class="pt-triggers">
-			<div id="iterateEffects" class="info">i</div>
-		</div>
-		
-	</div>
-	<div id="pt-main" class="pt-perspective">
+		<div id="pt-main" class="pt-perspective">
 			<div class="pt-page pt-page-1">
-			
-				@yield('ParalaxPicture')
 				
+				@yield('ParalaxPicture')
+					
 				@yield('logo')
-			
+
+				@yield('information_button')
+				
 			</div>
-			<div class="pt-page pt-page-2"><h1><span>A collection of</span><strong>Page</strong> 2Transitions</h1></div>
-			<div class="pt-page pt-page-3"><h1><span>A collection of</span><strong>Page</strong> 3Transitions</h1></div>
-			<div class="pt-page pt-page-4"><h1><span>A collection of</span><strong>Page</strong> 4Transitions</h1></div>
+
+			<div>
+				@yield('navigation_bar')
+			</div>
+
+			<div class="pt-page pt-page-2">
+				<h1><span>A collection of</span><strong>Page</strong> 2Transitions</h1>
+				@yield('next_page_button')
+			</div>
+
+			<div class="pt-page pt-page-3">
+				<h1><span>A collection of</span><strong>Page</strong> 3Transitions</h1>
+				@yield('next_page_button')
+			</div>
+
+			<div class="pt-page pt-page-4">
+				<h1><span>A collection of</span><strong>Page</strong> 4Transitions</h1>
+				@yield('next_page_button')
+			</div>
+			
 		</div>
 
 		@yield('script')

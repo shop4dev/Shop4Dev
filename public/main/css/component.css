@@ -13,7 +13,6 @@ html, body { height: 100%; }
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	top: 0;
 	left: 0;
 	visibility: hidden;
 	overflow: hidden;
@@ -69,32 +68,43 @@ html, body { height: 100%; }
 	opacity: 0.4;
 }
 
+.logo {
+	font-family: 'FreeSans', serif;
+	font-weight: 400;
+	font-size: 210%;
+}
+
 .pt-page h1 strong {
 	color: rgba(0,0,0,0.1);
 }
 
 .pt-page-1 {
-	background: #0ac2d2;
+	background: #7bb7fa;
 }
 
 .pt-page-2 {
-	background: #7bb7fa;
+	background: #a77ef6;
+	top: 47px;
 }
 
 .pt-page-3 {
 	background: #60d7a9;
+	top: 47px;
 }
 
 .pt-page-4 {
 	background: #fdc162;
+	top: 47px;
 }
 
 .pt-page-5 {
 	background: #fd6a62;
+	top: 47px;
 }
 
 .pt-page-6 {
 	background: #f68dbb;
+	top: 47px;
 }
 
 /* Triggers (menu and button) */
