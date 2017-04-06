@@ -342,6 +342,10 @@ img.Logo {
         transform: scale(1.1);
 }
 
+.navbar-first{
+  background-color: rgba(255,255,255,0)!important;
+}
+
 .modal {
     /*display: none;  Hidden by default */
     position: fixed; /* Stay in place */

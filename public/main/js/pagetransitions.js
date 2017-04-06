@@ -6,6 +6,7 @@ var PageTransitions = (function() {
         $iterate2 = $( '#iterateEffects2' ),
         $iterate3 = $( '#iterateEffects3' ),
         $iterate4 = $( '#iterateEffects4' ),
+        $nav = $( '#mainNav' ),
 		animcursor = 19,
 		pagesCount = $pages.length,
 		current = 0,
@@ -24,6 +25,12 @@ var PageTransitions = (function() {
 		support = Modernizr.cssanimations;
 
     	$(window).bind('mousewheel', function(event) {
+    	    if (current == 0){
+    	        addTransparentNav();
+            }
+            else{
+    	        addGreyNav();
+            }
         	if (event.originalEvent.wheelDelta >= 0) {
         		if (current > 0) {
                     pageUp(animcursor);
@@ -36,6 +43,16 @@ var PageTransitions = (function() {
         	}
     	});
 
+
+
+    function addTransparentNav(){
+
+        $nav.addClass('navbar-first');
+    }
+
+    function addGreyNav(){
+        $nav.removeClass('navbar-first');
+    }
 
     function init() {
 
