@@ -14,13 +14,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="page-scroll" href="#download">Download</a>
+                    <a id="iterateShop" class="page-scroll" >Shop</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#features">Features</a>
+                    <a id="iteratePortfolio" class="page-scroll" >Portfolio</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
+                    <a id="iterateContacts" class="page-scroll" >Contacts</a>
+                </li>
+                <li>
+                    <a class="page-scroll" >Login</a>
                 </li>
             </ul>
         </div>

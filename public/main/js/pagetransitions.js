@@ -6,6 +6,9 @@ var PageTransitions = (function() {
         $iterate2 = $( '#iterateEffects2' ),
         $iterate3 = $( '#iterateEffects3' ),
         $iterate4 = $( '#iterateEffects4' ),
+        $iterateShop = $( '#iterateShop' ),
+        $iteratePortfolio = $( '#iteratePortfolio' ),
+        $iterateContacts = $( '#iterateContacts' ),
         $nav = $( '#mainNav' ),
 		animcursor = 19,
 		pagesCount = $pages.length,
@@ -25,20 +28,27 @@ var PageTransitions = (function() {
 		support = Modernizr.cssanimations;
 
     	$(window).bind('mousewheel', function(event) {
-    	    if (current == 0){
-    	        addTransparentNav();
-            }
-            else{
-    	        addGreyNav();
-            }
+
         	if (event.originalEvent.wheelDelta >= 0) {
         		if (current > 0) {
                     pageUp(animcursor);
                 }
+                if (current == 0){
+                    addTransparentNav();
+                }
+                else {
+                    addGreyNav();
+                }
         	}
         	else {
-        		if (current < 3) {
+                if (current < 3) {
                     pageDown(animcursor);
+                }
+                if (current == 0){
+                    addTransparentNav();
+                }
+                else {
+                    addGreyNav();
                 }
         	}
     	});
@@ -55,6 +65,7 @@ var PageTransitions = (function() {
     }
 
     function init() {
+
 
 		$pages.each( function() {
 			var $page = $( this );
@@ -75,29 +86,56 @@ var PageTransitions = (function() {
 			if( isAnimating ) {
 				return false;
 			}
+			addGreyNav();
             pageDown( animcursor );
 		} );
         $iterate2.on( 'click', function() {
             if( isAnimating ) {
                 return false;
             }
+            addGreyNav();
             selectPage( animcursor , 2);
         } );
         $iterate3.on( 'click', function() {
             if( isAnimating ) {
                 return false;
             }
+            addGreyNav();
+            selectPage( animcursor , 3);
+        } );
+        $iterateShop.on( 'click', function() {
+            if( isAnimating ) {
+                return false;
+            }
+            addGreyNav();
+            selectPage( animcursor , 1);
+        } );
+        $iteratePortfolio.on( 'click', function() {
+            if( isAnimating ) {
+                return false;
+            }
+            addGreyNav();
+            selectPage( animcursor , 2);
+        } );
+        $iterateContacts.on( 'click', function() {
+            if( isAnimating ) {
+                return false;
+            }
+            addGreyNav();
             selectPage( animcursor , 3);
         } );
         $iterate4.on( 'click', function() {
             if( isAnimating ) {
                 return false;
             }
+            addTransparentNav();
             selectPage( animcursor , 0);
         } );
 	}
 
     function selectPage(options, page ) {
+
+
 
         if( isAnimating ) {
             return false;
