@@ -1,24 +1,44 @@
 @section('fourth')
-    <div class="container" style="width: 100%;">
-        <div class="row">
-            <div class="background">
-                <ul>
-                    <li class="textposition" style="padding-right: 20px;"><a class="hvr-grow-shadow"><img class="login" src="/main/parallax/images/Home.png"></a></li>
-                    <li class="textposition"><a class="hvr-bounce-to-top">Contact Us</a></li>
-                    <li class="textposition"><a class="hvr-bounce-to-top">Our Portfolio</a></li>
-                    <li class="textposition"><a class="hvr-bounce-to-top">Shop</a></li>
-                    <li>
-                        <div class="logoText">
-                            <img class="Gear position" src="/main/parallax/images/shop4devT.png">
-                            <img class="Gear2 swing" src="/main/parallax/images/shop4devG.png"/>
-                        </div>
-                    </li>
-                </ul>
+<div class="container" style="position: relative; top: 65px;">
+<div class="row">
+    <div class="col-md-6">
+    <h2>Contact us</h2>
+    <form>
+        
+        <div class="form-group">
+            <div class="col-md-6" style="padding:0">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Last name">
             </div>
+            <div class="col-md-6" style="padding:0">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Last name">
+            </div>
+            
         </div>
+        <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail adress">
+        </div>
+        <div class="form-group">
+            <textarea rows="4" cols="10" class="form-control" placeholder="E-mail adress"></textarea>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6" style="padding:0">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+            <div class="col-md-6" style="padding:0">
+              <button class="btn btn-success" style="float:right">Reset</button>
+            </div>
+            
+        </div>
+      
+    </form>
     </div>
+    <div class="col-md-6">
+        <img src="/main/parallax/images/little_dude.png"/>
 
-    <h1><span>A collection of</span><strong>Page</strong> 2Transitions</h1>
+        
+    </div>
+</div>
+</div>
 
     <div id="iterateEffects4" class="next"><img src="/main/parallax/images/arrowdown.png"></div>
 
