@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/main/css/multilevelmenu.css" />
     <link rel="stylesheet" type="text/css" href="/main/css/component.css" />
     <link rel="stylesheet" type="text/css" href="/main/css/animations.css" />
-    <link rel="stylesheet" type="text/css" href="/main/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/main/css/navigation_bar.css">
 </head>
 <body style="background-color: #2f506a">
