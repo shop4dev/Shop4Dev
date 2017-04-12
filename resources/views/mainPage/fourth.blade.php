@@ -26,10 +26,10 @@
             </div>
             <div class="form-group">
                 <div class="col-md-6" style="padding:7px">
-                    <button class="btn btn-success" style="float:left; width: 213px; height: 45px; font-size: 20px;">Submit</button>
+                    <button class="btn btn-success" style="float:left; width: 260px; height: 45px; font-size: 20px;">Submit</button>
                 </div>
                 <div class="col-md-6" style="padding:7px">
-                <button class="btn btn-success" style="float:right; width: 213px; height: 45px; font-size: 20px;">Reset</button>
+                <button class="btn btn-success" style="float:right; width: 260px; height: 45px; font-size: 20px;">Reset</button>
                 </div>
                 
             </div>
