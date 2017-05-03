@@ -43,6 +43,13 @@ class product
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="img", type="string", length=255)
+     */
+    private $img;
+
+    /**
      * @ORM\ManyToOne(targetEntity="cart", inversedBy="products")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=true)
      */
@@ -154,6 +161,22 @@ class product
     public function getToList()
     {
         return $this->cart;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * @param mixed $img
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
     }
 }
 
