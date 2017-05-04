@@ -251,7 +251,7 @@ p{
 	font-family:'Lato';
 	}
 
-a.learn_more2{
+a.goShop{
 	font-family: 'Dosis';
 	display:block;
 	font-size:16px;
@@ -269,10 +269,32 @@ a.learn_more2{
 	-moz-transition:all 0.2s ease-in-out;
 	-webkit-transition:all 0.2s ease-in-out;
 	}
-a.learn_more2:hover{
+a.goShop:hover{
 	background:#222222;
 	}
 
+a.register{
+	margin-top: 20px;
+	font-family: 'Dosis';
+	display:block;
+	font-size:16px;
+	color:#ffffff;
+	background:#49b5e7;
+	width:178px;
+	height:46px;
+	line-height:46px;
+	border-radius:3px;
+	text-align:center;
+	font-family:''Dosis'';
+	text-transform:uppercase;
+	font-weight: 600;
+	transition:all 0.2s ease-in-out;
+	-moz-transition:all 0.2s ease-in-out;
+	-webkit-transition:all 0.2s ease-in-out;
+}
+a.register:hover{
+	background:#222222;
+}
 	
 
 
@@ -709,6 +731,7 @@ img {
 	margin: 0 20px;
 }
 .main-section.team{
+	background: #f9f9f9;
 	padding:85px 0;
 }
 .main-section.team h6{
