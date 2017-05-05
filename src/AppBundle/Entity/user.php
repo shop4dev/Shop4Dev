@@ -8,54 +8,40 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
- * user
- *
- * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\userRepository")
+ * @ORM\Entity
+ * @UniqueEntity(fields="email", message="Email already taken")
  */
-class user
+class user implements UserInterface
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="phone", type="string", length=20)
      */
     private $phone;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="address", type="string", length=255)
      */
     private $address;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="role", type="string", length=255)
+     * @ORM\Column(type="string", length=50)
      */
     private $role;
 
@@ -84,24 +70,11 @@ class user
         return null;
     }
 
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return user
-     */
     public function setName($name)
     {
         $this->name = $name;
@@ -109,23 +82,16 @@ class user
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return user
-     */
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
     public function setEmail($email)
     {
         $this->email = $email;
@@ -133,23 +99,11 @@ class user
         return $this;
     }
 
-    /**
-     * Get email
-     *
-     * @return string
-     */
     public function getEmail()
     {
         return $this->email;
     }
 
-    /**
-     * Set phone
-     *
-     * @param string $phone
-     *
-     * @return user
-     */
     public function setPhone($phone)
     {
         $this->phone = $phone;
@@ -157,23 +111,11 @@ class user
         return $this;
     }
 
-    /**
-     * Get phone
-     *
-     * @return string
-     */
     public function getPhone()
     {
         return $this->phone;
     }
 
-    /**
-     * Set address
-     *
-     * @param string $address
-     *
-     * @return user
-     */
     public function setAddress($address)
     {
         $this->address = $address;
@@ -181,38 +123,26 @@ class user
         return $this;
     }
 
-    /**
-     * Get address
-     *
-     * @return string
-     */
     public function getAddress()
     {
         return $this->address;
     }
 
-    /**
-     * Set role
-     *
-     * @param string $role
-     *
-     * @return user
-     */
-    public function setRole($role)
+    public function setRole($role = null)
     {
         $this->role = $role;
 
         return $this;
     }
 
-    /**
-     * Get role
-     *
-     * @return string
-     */
     public function getRole()
     {
         return $this->role;
+    }
+
+    public function getRoles()
+    {
+        return [$this->getRole()];
     }
 
     public function getSalt()
@@ -245,7 +175,7 @@ class user
      *
      * @param \AppBundle\Entity\cart $cart
      *
-     * @return User
+     * @return user
      */
     public function addToList(\AppBundle\Entity\cart $cart)
     {

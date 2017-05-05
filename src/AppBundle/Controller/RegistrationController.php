@@ -17,6 +17,7 @@ class RegistrationController extends Controller
         // Create a new blank user and process the form
         $user = new user();
         $form = $this->createForm(UserType::class, $user);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -24,6 +25,10 @@ class RegistrationController extends Controller
             $encoder = $this->get('security.password_encoder');
             $password = $encoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
+
+            $user->setPhone('+3706');
+            $user->setAddress('-');
+            $user->setRole('ROLE_USER');
 
             // Save
             $em = $this->getDoctrine()->getManager();

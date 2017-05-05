@@ -81,7 +81,7 @@ class FormLoginAuthenticator extends AbstractFormLoginAuthenticator
 
     protected function getDefaultSuccessRedirectUrl()
     {
-        return $this->router->generate('profile');
+        return $this->router->generate('user');
     }
 
     public function supportsRememberMe()
