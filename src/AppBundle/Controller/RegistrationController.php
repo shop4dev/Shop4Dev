@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\user;
+use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -15,9 +15,8 @@ class RegistrationController extends Controller
     public function registerAction(Request $request)
     {
         // Create a new blank user and process the form
-        $user = new user();
+        $user = new User();
         $form = $this->createForm(UserType::class, $user);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -26,8 +25,7 @@ class RegistrationController extends Controller
             $password = $encoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
 
-            $user->setPhone('+3706');
-            $user->setAddress('-');
+            // Set their role
             $user->setRole('ROLE_USER');
 
             // Save
