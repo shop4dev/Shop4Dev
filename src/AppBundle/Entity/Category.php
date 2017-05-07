@@ -64,7 +64,7 @@ class Category
      *
      * @param string $name
      *
-     * @return category
+     * @return Category
      */
     public function setName($name)
     {
@@ -88,7 +88,7 @@ class Category
      *
      * @param string $img
      *
-     * @return category
+     * @return Category
      */
     public function setImg($img)
     {

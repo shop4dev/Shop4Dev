@@ -19,10 +19,10 @@ class ShopController extends Controller
 
         $data = array();
 
-        foreach  ($allCats as $cats)
+        foreach  ($allCats as $cat)
         {
-            $products = $cats->getProducts();
-            $data[$cats->getId()] = $products;
+            $products = $cat->getProducts();
+            $data[$cat->getId()] = $products;
         }
 
         return $this->render('main/shop.html.twig', array(

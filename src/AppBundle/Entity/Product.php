@@ -57,11 +57,11 @@ class Product
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
      * @ORM\JoinColumn(name="cat_id", referencedColumnName="id", nullable=true)
      */
-    private $cat;
+    private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity="Cart", inversedBy="products")
-     * @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="cart_id", referencedColumnName="id", nullable=true)
      */
     private $cart;
 
@@ -176,13 +176,13 @@ class Product
     /**
      * Set category
      *
-     * @param \AppBundle\Entity\Category $cat
+     * @param \AppBundle\Entity\Category $category
      *
      * @return product
      */
-    public function setCat(\AppBundle\Entity\Category $cat= null)
+    public function setCat(\AppBundle\Entity\Category $category = null)
     {
-        $this->cat = $cat;
+        $this->category = $category;
 
         return $this;
     }
@@ -194,7 +194,7 @@ class Product
      */
     public function getCat()
     {
-        return $this->cat;
+        return $this->category;
     }
 
     /**
