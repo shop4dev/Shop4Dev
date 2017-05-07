@@ -150,7 +150,7 @@ class Cart
      *
      * @return Cart
      */
-    public function addToList(\AppBundle\Entity\Product $product)
+    public function addProduct(\AppBundle\Entity\Product $product)
     {
         $this->product[] = $product;
 

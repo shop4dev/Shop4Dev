@@ -54,6 +54,12 @@ class Product
     private $img;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\JoinColumn(name="cat_id", referencedColumnName="id", nullable=true)
+     */
+    private $cat;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Cart", inversedBy="products")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=true)
      */
@@ -150,7 +156,7 @@ class Product
      *
      * @return product
      */
-    public function setToList(\AppBundle\Entity\Cart $cart = null)
+    public function setCart(\AppBundle\Entity\Cart $cart = null)
     {
         $this->cart = $cart;
 
@@ -162,9 +168,33 @@ class Product
      *
      * @return \AppBundle\Entity\Cart
      */
-    public function getToList()
+    public function getCart()
     {
         return $this->cart;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Category $cat
+     *
+     * @return product
+     */
+    public function setCat(\AppBundle\Entity\Category $cat= null)
+    {
+        $this->cat = $cat;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Category
+     */
+    public function getCat()
+    {
+        return $this->cat;
     }
 
     /**

@@ -138,7 +138,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function addToList(\AppBundle\Entity\Cart $cart)
+    public function addCart(\AppBundle\Entity\Cart $cart)
     {
         $this->cart[] = $cart;
 

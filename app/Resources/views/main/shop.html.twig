@@ -53,45 +53,17 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
-                                    Web App</h3>
+                                    Categories</h3>
                             </div>
                             <div class="panel-body">
-                                <div class="the-price">
-                                    <h1>
-                                        <span style="font-size: 25px">From </span> 30€</h1>
-                                    {#<small>1 month FREE trial</small>#}
-                                </div>
                                 <table class="table">
-                                    <tr>
+                                    {% for cat in cats %}
+                                    <tr id="cat{{ cat.id }}">
                                         <td>
-                                            Free Page Design
+                                            {{ cat.name }}
                                         </td>
                                     </tr>
-                                    <tr class="active">
-                                        <td>
-                                            Customisable
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            100+ Modules Available
-                                        </td>
-                                    </tr>
-                                    <tr class="active">
-                                        <td>
-                                            Free Hosting
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Support 24/7
-                                        </td>
-                                    </tr>
-                                    <tr class="active">
-                                        <td>
-                                            Monthly SEO Reviews
-                                        </td>
-                                    </tr>
+                                    {% endfor %}
                                 </table>
                             </div>
                             <div class="panel-footer">
@@ -102,7 +74,7 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
-                                    Web App</h3>
+                                    Modules</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="the-price">

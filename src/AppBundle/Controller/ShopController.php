@@ -13,14 +13,21 @@ class ShopController extends Controller
      */
     public function listAction()
     {
-        $users = $this->getDoctrine()
-            ->getRepository('AppBundle:User')
+        $allCats = $this->getDoctrine()
+            ->getRepository('AppBundle:Category')
             ->findAll();
 
-        $allTodos = $this->getDoctrine();
+        $data = array();
+
+        foreach  ($allCats as $cats)
+        {
+            $products = $cats->getProducts();
+            $data[$cats->getId()] = $products;
+        }
 
         return $this->render('main/shop.html.twig', array(
-
+            'data' => $data,
+            'cats' => $allCats
         ));
     }
 }
