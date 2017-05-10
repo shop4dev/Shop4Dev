@@ -98,6 +98,14 @@
                                                 </div>
                                             </div>
                                         {% endfor %}
+                                        <div id="checkboxes">
+                                            <input type="checkbox" name="rGroup" value="1" id="r1" checked="checked" />
+                                            <label class="whatever" for="r1">Testas</label>
+                                            <input type="checkbox" name="rGroup" value="2" id="r2" />
+                                            <label class="whatever" for="r2"></label>
+                                            <input type="checkbox" name="rGroup" value="3" id="r3" />
+                                            <label class="whatever" for="r3"></label>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         {% if cats | length == cat.id %}
@@ -118,6 +126,23 @@
 {% endblock %}
 
 {% block scripts %}
+
+    <style>
+        .whatever{
+            background-color: red;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+
+        #checkboxes input[type=checkbox]{
+            display: none;
+        }
+
+        #checkboxes input[type=checkbox]:checked + .whatever{
+            background-color: green;
+        }
+    </style>
 
     <script>
 
