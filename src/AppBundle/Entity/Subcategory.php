@@ -9,22 +9,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Category
+ * Subcategory
  *
- * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
+ * @ORM\Table(name="subcategory")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SubcategoryRepository")
  */
-class Category
+class Subcategory
 {
-    /**
-     * @ORM\OneToMany(targetEntity="Subcategory", mappedBy="category", cascade={"remove"})
-     */
-    private $subcategories;
-
-    public function __construct()
-    {
-        $this->subcategories = new ArrayCollection();
-    }
     /**
      * @var int
      *
@@ -48,6 +39,22 @@ class Category
      */
     private $img;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="subcategory", cascade={"remove"})
+     */
+    private $products;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="category", inversedBy="subcategory")
+     * @ORM\JoinColumn(name="sub_id", referencedColumnName="id", nullable=true)
+     */
+    private $category;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -64,7 +71,7 @@ class Category
      *
      * @param string $name
      *
-     * @return Category
+     * @return Subcategory
      */
     public function setName($name)
     {
@@ -88,7 +95,7 @@ class Category
      *
      * @param string $img
      *
-     * @return Category
+     * @return Subcategory
      */
     public function setImg($img)
     {
@@ -109,37 +116,60 @@ class Category
 
 
     /**
-     * Add subcategory
+     * Set category
      *
-     * @param \AppBundle\Entity\Subcategory $subcategory
+     * @param \AppBundle\Entity\Category $category
      *
-     * @return Category
+     * @return subcategory
      */
-    public function addSubcategories(\AppBundle\Entity\Subcategory $subcategory)
+    public function setSubCat(\AppBundle\Entity\Category $category = null)
     {
-        $this->subcategories[] = $subcategory;
+        $this->category = $category;
 
         return $this;
     }
 
     /**
-     * Remove subcategory
+     * Get category
      *
-     * @param \AppBundle\Entity\Subcategory $subcategory
+     * @return \AppBundle\Entity\Category
      */
-    public function removeSubcategories(\AppBundle\Entity\Subcategory $subcategory)
+    public function getSubCat()
     {
-        $this->subcategories->removeElement($subcategory);
+        return $this->category;
+    }
 
+    /**
+     * Add product
+     *
+     * @param \AppBundle\Entity\Product $product
+     *
+     * @return Product
+     */
+    public function addSubcategory(\AppBundle\Entity\Product $product)
+    {
+        $this->products[] = $product;
+        return $this;
+    }
+
+    /**
+     * Remove product
+     *
+     * @param \AppBundle\Entity\Product $product
+     */
+    public function removeSubcategory(\AppBundle\Entity\Product $product)
+    {
+        $this->products->removeElement($product);
     }
     /**
-     * Get subcategories
+     * Get products
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getSubcategories()
     {
-        return $this->subcategories;
+        return $this->products;
     }
+
 }
 

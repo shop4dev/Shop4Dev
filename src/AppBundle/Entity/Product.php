@@ -53,11 +53,6 @@ class Product
      */
     private $img;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
-     * @ORM\JoinColumn(name="cat_id", referencedColumnName="id", nullable=true)
-     */
-    private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity="Cart", inversedBy="products")
@@ -65,6 +60,11 @@ class Product
      */
     private $cart;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Subcategory", inversedBy="products")
+     * @ORM\JoinColumn(name="subCat_id", referencedColumnName="id", nullable=true)
+     */
+    private $subcategory;
 
     /**
      * Get id
@@ -174,27 +174,27 @@ class Product
     }
 
     /**
-     * Set category
+     * Set subcategory
      *
-     * @param \AppBundle\Entity\Category $category
+     * @param \AppBundle\Entity\Subcategory $subcategory
      *
      * @return product
      */
-    public function setCat(\AppBundle\Entity\Category $category = null)
+    public function setSubCat(\AppBundle\Entity\Subcategory $subcategory = null)
     {
-        $this->category = $category;
+        $this->subcategory = $subcategory;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Get subcategory
      *
-     * @return \AppBundle\Entity\Category
+     * @return \AppBundle\Entity\Subcategory
      */
-    public function getCat()
+    public function getSubCat()
     {
-        return $this->category;
+        return $this->subcategory;
     }
 
     /**
@@ -212,5 +212,30 @@ class Product
     {
         $this->img = $img;
     }
+
+    /**
+     * Set subcategory
+     *
+     * @param \AppBundle\Entity\Subcategory $subcategory
+     *
+     * @return subcategory
+     */
+    public function setSubcategory(\AppBundle\Entity\Subcategory $subcategory = null)
+    {
+        $this->subcategory = $subcategory;
+
+        return $this;
+    }
+
+    /**
+     * Get subcategory
+     *
+     * @return \AppBundle\Entity\Subcategory
+     */
+    public function getSubcategory()
+    {
+        return $this->subcategory;
+    }
+
 }
 
