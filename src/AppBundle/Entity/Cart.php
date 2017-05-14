@@ -38,21 +38,17 @@ class Cart
     private $orderPrice;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="order_items", type="string", length=255)
+     */
+    private $orderItems;
+
+    /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="carts")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      */
     private $user;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="cart", cascade={"remove"})
-     */
-    private $products;
-
-
-    public function __construct()
-    {
-        $this->products = new ArrayCollection();
-    }
 
     public function eraseCredentials()
     {
@@ -142,39 +138,20 @@ class Cart
         return $this->user;
     }
 
-
     /**
-     * Add product
-     *
-     * @param \AppBundle\Entity\Product $product
-     *
-     * @return Cart
+     * @return mixed
      */
-    public function addProduct(\AppBundle\Entity\Product $product)
+    public function getOrderItems()
     {
-        $this->product[] = $product;
-
-        return $this;
+        return $this->orderItems;
     }
 
     /**
-     * Remove product
-     *
-     * @param \AppBundle\Entity\Product $product
+     * @param mixed $orderItems
      */
-    public function removeProduct(\AppBundle\Entity\Product $product)
+    public function setOrderItems($orderItems)
     {
-        $this->products->removeElement($product);
-
-    }
-    /**
-     * Get products
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProducts()
-    {
-        return $this->products;
+        $this->orderItems = $orderItems;
     }
 }
 

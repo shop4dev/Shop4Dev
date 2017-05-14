@@ -35,7 +35,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="price", type="decimal", precision=2, scale=0)
+     * @ORM\Column(name="price", type="integer")
      */
     private $price;
 
@@ -53,16 +53,9 @@ class Product
      */
     private $img;
 
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Cart", inversedBy="products")
-     * @ORM\JoinColumn(name="cart_id", referencedColumnName="id", nullable=true)
-     */
-    private $cart;
-
     /**
      * @ORM\ManyToOne(targetEntity="Subcategory", inversedBy="products")
-     * @ORM\JoinColumn(name="subCat_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="subcat_id", referencedColumnName="id", nullable=true)
      */
     private $subcategory;
 
@@ -146,31 +139,6 @@ class Product
     public function getDescription()
     {
         return $this->description;
-    }
-
-
-    /**
-     * Set cart
-     *
-     * @param \AppBundle\Entity\Cart $cart
-     *
-     * @return product
-     */
-    public function setCart(\AppBundle\Entity\Cart $cart = null)
-    {
-        $this->cart = $cart;
-
-        return $this;
-    }
-
-    /**
-     * Get cart
-     *
-     * @return \AppBundle\Entity\Cart
-     */
-    public function getCart()
-    {
-        return $this->cart;
     }
 
     /**
