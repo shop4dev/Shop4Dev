@@ -61,10 +61,13 @@ class AdminController extends Controller
                 $fileName
             );
 
+            $category = $form['subcategory']->getData();
+
             $product->setName($name);
             $product->setPrice($price);
             $product->setDescription($description);
             $product->setImg($fileName);
+            $product->setSubcategory($category);
 
             $em = $this->getDoctrine()->getManager();
 
@@ -120,6 +123,7 @@ class AdminController extends Controller
                 $fileName
             );
 
+            $category = $form['subcategory']->getData();
 
             $em = $this->getDoctrine()->getManager();
             $product = $em->getRepository('AppBundle:Product')->find($id);
@@ -128,6 +132,7 @@ class AdminController extends Controller
             $product->setPrice($price);
             $product->setDescription($description);
             $product->setImg($fileName);
+            $product->setSubcategory($category);
 
             $em->flush();
 
@@ -602,5 +607,36 @@ class AdminController extends Controller
         );
 
         return $this->redirectToRoute('user');
+    }
+
+    /**
+     * @Route("/user/orders/{id}", name="user_orders")
+     */
+    public function adminUserOrderAction($id)
+    {
+        $user = $this->getDoctrine()
+            ->getRepository('AppBundle:User')
+            ->find($id);
+
+        $carts = $this->getDoctrine()
+            ->getRepository('AppBundle:Cart')
+            ->findAll();
+
+        $data = array();
+
+        $var = 0;
+        foreach ( $carts as $cart)
+        {
+            if( $cart->getUser()->getId() == $id){
+                $data[$var]=$cart;
+                $var=$var+1;
+            }
+        }
+
+        return $this->render('admin/user/order.html.twig', [
+
+            'user' => $user,
+            'carts' => $data
+        ]);
     }
 }
