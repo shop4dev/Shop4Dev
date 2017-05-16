@@ -1,0 +1,41 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+    <h2 class="page-header">User {{ user.id }}</h2>
+
+    {#<section class="col-lg-4 connectedSortable">#}
+
+    {#<button type="button" class="btn btn-default pull-left"><a href="product/create"><i class="fa fa-plus"></i> Add new user</a></button>#}
+
+    {#</section>#}
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <th scope="row">{{ user.id }}</th>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ carts[user.id]}}</td>
+                <td>
+                    <a href="/admin/user/orders/{{ user.id }}" class="btn btn-default">Orders</a>
+                    <a href="/admin/user/edit/{{ user.id }}" class="btn btn-default">Edit</a>
+                    <a href="/admin/user/delete/{{ user.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

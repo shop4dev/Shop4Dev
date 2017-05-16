@@ -50,6 +50,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="img", type="string", length=255)
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
      */
     private $img;
 

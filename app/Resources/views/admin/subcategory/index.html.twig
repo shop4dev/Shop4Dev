@@ -1,0 +1,42 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+    <h2 class="page-header">Subcategorie's</h2>
+
+    <section class="col-lg-4 connectedSortable">
+
+        <button type="button" class="btn btn-default pull-left"><a href="subcategory/create"><i class="fa fa-plus"></i> Add new subcategory</a></button>
+
+    </section>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Img</th>
+            <th>Category</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for subcategory in subcategories %}
+            <tr>
+                <th scope="row">{{ subcategory.id }}</th>
+                <td>{{ subcategory.name }}</td>
+                <td><div class="hover01 column">
+                        <figure><img src="{{ asset('uploads/subcategory/' ~ subcategory.img) }}" style="width: 25px" \></figure>
+                    </div>
+                </td>
+                <td>{{ subcategory.category.name }}</td>
+                <td>
+                    <a href="/admin/subcategory/edit/{{ subcategory.id }}" class="btn btn-default">Edit</a>
+                    <a href="/admin/subcategory/delete/{{ subcategory.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

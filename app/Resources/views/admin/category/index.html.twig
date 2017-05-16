@@ -1,0 +1,40 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+    <h2 class="page-header">Categorie's</h2>
+
+    <section class="col-lg-4 connectedSortable">
+
+        <button type="button" class="btn btn-default pull-left"><a href="category/create"><i class="fa fa-plus"></i> Add new category</a></button>
+
+    </section>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Img</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <th scope="row">{{ category.id }}</th>
+                <td>{{ category.name }}</td>
+                <td><div class="hover01 column">
+                        <figure><img src="{{ asset('uploads/category/' ~ category.img) }}" style="width: 25px" \></figure>
+                    </div>
+                </td>
+                <td>
+                    <a href="/admin/category/edit/{{ category.id }}" class="btn btn-default">Edit</a>
+                    <a href="/admin/category/delete/{{ category.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
