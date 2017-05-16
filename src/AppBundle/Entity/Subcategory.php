@@ -121,11 +121,8 @@ class Subcategory
      *
      * @return Category
      */
-<<<<<<< HEAD
-    public function setCategory(\AppBundle\Entity\Category $category)
-=======
+
     public function setCategory(\AppBundle\Entity\Category $category = null)
->>>>>>> master
     {
         $this->category = $category;
 
