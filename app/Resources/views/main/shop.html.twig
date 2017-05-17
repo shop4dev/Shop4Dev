@@ -145,14 +145,18 @@
                         <h4 class="modal-title" id="myModalLabel">Confirm Order</h4>
                     </div>
                     <div class="modal-body">
+
+                        <label>To confirm order, press submit button below and we will contact you within 24 hours.</label>
                         {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                        <div style="display: none">
                             {#{{ form_row(form.dateCreated, {'attr': {'class': 'form-control', 'id': 'form_date'}}) }}#}
                             {{ form_row(form.orderItems, {'attr': {'class': 'form-control', 'id': 'form_items'}}) }}
                             {{ form_row(form.orderPrice, {'attr': {'class': 'form-control', 'id': 'form_price'}}) }}
-
+                        </div>
                                 <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
 
                         {{ form_end(form) }}
+
 
                     </div>
                 {% else %}
