@@ -237,5 +237,12 @@ class Product
         return $this->subcategory;
     }
 
+
+    public function createSearchByNameQueryBuilder($name)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.name LIKE :name')
+            ->setParameter('name', $name);
+    }
 }
 

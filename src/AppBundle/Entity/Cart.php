@@ -54,6 +54,21 @@ class Cart
         $this->products = new ArrayCollection();
     }
 
+    public function calculateTotalPrice()
+    {
+        /*$cartRepository = $this->entityManager
+            ->getRepository('AppBundle:Employee');*/
+        //$cart = $cartRepository->find($id);
+        $totalPrice = 0;
+        if(!empty($products)){
+            foreach ($products as $product ){
+                $totalPrice+=$product->getPrice();
+            }
+        }
+
+        return $totalPrice;
+    }
+
     public function eraseCredentials()
     {
         return null;
