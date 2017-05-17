@@ -1,0 +1,35 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+    <h2 class="page-header">User {{ user.name }}</h2>
+
+    {#<section class="col-lg-4 connectedSortable">#}
+
+    {#<button type="button" class="btn btn-default pull-left"><a href="product/create"><i class="fa fa-plus"></i> Add new user</a></button>#}
+
+    {#</section>#}
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Price</th>
+            <th>Orders</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cart in carts %}
+            <tr>
+                <th scope="row">{{ cart.id }}</th>
+                <td>{{ cart.dateCreated|date('Y-m-d H:i:s') }}</td>
+                <td>{{ cart.orderPrice }}</td>
+                <td>{{ cart.orderItems }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

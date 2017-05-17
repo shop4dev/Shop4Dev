@@ -44,9 +44,8 @@ class Subcategory
      */
     private $products;
 
-
     /**
-     * @ORM\ManyToOne(targetEntity="category", inversedBy="subcategory")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="subcategories")
      * @ORM\JoinColumn(name="sub_id", referencedColumnName="id", nullable=true)
      */
     private $category;
@@ -120,9 +119,10 @@ class Subcategory
      *
      * @param \AppBundle\Entity\Category $category
      *
-     * @return subcategory
+     * @return Category
      */
-    public function setSubCat(\AppBundle\Entity\Category $category = null)
+
+    public function setCategory(\AppBundle\Entity\Category $category = null)
     {
         $this->category = $category;
 
@@ -134,7 +134,7 @@ class Subcategory
      *
      * @return \AppBundle\Entity\Category
      */
-    public function getSubCat()
+    public function getCategory()
     {
         return $this->category;
     }
@@ -157,7 +157,7 @@ class Subcategory
      *
      * @param \AppBundle\Entity\Product $product
      */
-    public function removeSubcategory(\AppBundle\Entity\Product $product)
+    public function removeProduct(\AppBundle\Entity\Product $product)
     {
         $this->products->removeElement($product);
     }
@@ -166,7 +166,7 @@ class Subcategory
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSubcategories()
+    public function getProducts()
     {
         return $this->products;
     }

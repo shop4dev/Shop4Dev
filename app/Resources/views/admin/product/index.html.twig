@@ -1,0 +1,44 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+    <h2 class="page-header">Product's</h2>
+
+    <section class="col-lg-4 connectedSortable">
+
+        <button type="button" class="btn btn-default pull-left"><a href="product/create"><i class="fa fa-plus"></i> Add new product</a></button>
+
+    </section>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Img</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <th scope="row">{{ product.id }}</th>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td>
+                <td><div class="hover01 column">
+                            <figure><img src="{{ asset('uploads/products/' ~ product.img) }}" \></figure>
+                    </div>
+                </td>
+                <td>
+                    <a href="/admin/product/edit/{{ product.id }}" class="btn btn-default">Edit</a>
+                    <a href="/admin/product/delete/{{ product.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

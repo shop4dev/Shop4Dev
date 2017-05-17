@@ -1,0 +1,24 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+    <h2 class="page-header">Add New Product</h2>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    {#<h3>The todo has the following errors:</h3>#}
+    {#<ul>#}
+    {#{% for error in errors %}#}
+    {#<li>{{ error.message }}</li>#}
+    {#{% endfor %}#}
+    {#</ul>#}
+    {#<script>#}
+        {#window.onunload = refreshParent;#}
+        {#function refreshParent() {#}
+            {#window.opener.location.reload();#}
+            {#//window.close();#}
+        {#}#}
+    {#</script>#}
+
+{% endblock %}

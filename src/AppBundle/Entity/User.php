@@ -51,6 +51,8 @@ class User implements UserInterface
      */
     private $carts;
 
+    protected $orderCount = 1;
+
     public function __construct()
     {
         $this->carts = new ArrayCollection();
@@ -104,6 +106,16 @@ class User implements UserInterface
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    public function getorderCount()
+    {
+        return $this->orderCount;
+    }
+
+    public function setOrder($order)
+    {
+        $this->orderCount = $order;
     }
 
     public function getPassword()
