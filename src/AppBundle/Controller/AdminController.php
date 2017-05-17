@@ -452,7 +452,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/user", name="user")
+     * @Route("/user", name="user_admin")
      */
     public function adminUserAction()
     {
