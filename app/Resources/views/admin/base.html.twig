@@ -60,7 +60,7 @@
                 </li>
                 <li><a href="/admin/user">User</a></li>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li><a href="/admin"><i class="fa fa-user"></i>{{ app.user.name }}</a></li>
+                    {#<li><a href="/admin"><i class="fa fa-user"></i>{{ app.user.name }}</a></li>#}
                     <li><a href="/logout" style="padding-left: 670px"> Logout</a></li>
                 {% else %}
                     <li><a href="/login"><i class="fa fa-user"></i> Client Area</a></li>

@@ -54,7 +54,7 @@ final class Test extends \Symfony\Bundle\FrameworkBundle\Test\WebTestCase
         $crawler = $client->request('GET', '/shop');
         $this->assertContains('Build Your Site', $client->getResponse()->getContent());
         $this->assertContains('Categories', $client->getResponse()->getContent());
-        $this->assertContains('Total Price', $client->getResponse()->getContent());
+        $this->assertContains('Modules', $client->getResponse()->getContent());
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
     }
 
