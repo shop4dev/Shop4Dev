@@ -33,7 +33,7 @@ class Cart
     /**
      * @var string
      *
-     * @ORM\Column(name="order_price", type="decimal", precision=2, scale=0)
+     * @ORM\Column(name="order_price", type="integer")
      */
     private $orderPrice;
 
@@ -119,7 +119,7 @@ class Cart
      *
      * @param \AppBundle\Entity\User $user
      *
-     * @return ToList
+     * @return Cart
      */
     public function setUser(\AppBundle\Entity\User $user = null)
     {

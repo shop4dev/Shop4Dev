@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class UserController extends Controller
 {
     /**
-     * @Route("/user", name="welcome")
+     * @Route("/user", name="user")
      */
     public function listAction()
     {
@@ -21,9 +21,9 @@ class UserController extends Controller
             ->findAll();
 
 
-        return $this->render('user/base.html.twig', array(
+        return $this->render('main/user.html.twig', array(
             'user' => $user,
-            'all_carts' => $allCarts,
+            'carts' => $allCarts,
         ));
     }
 }

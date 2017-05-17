@@ -35,7 +35,12 @@
                                 {#<li><a href="#testimonials"><i class="fa fa-thumbs-up"></i> Tetimonials</a></li>#}
                                 <li><a href="/#testimonials"><i class="fa fa-eur"></i> Pricing</a></li>
                                 <li><a href="/#contact"><i class="fa fa-phone-square"></i> Contact</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i> Client Area</a></li>
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <li><a href="/user"><i class="fa fa-user"></i> {{ app.user.name }}</a></li>
+                                    <li><a href="/logout"> Logout</a></li>
+                                {% else %}
+                                <li><a href="#" data-toggle="modal" data-target="#addList"><i class="fa fa-user"></i> Client Area</a></li>
+                                {% endif %}
                             </ul>
                         </div>  <!-- /.navbar-collapse -->
                     </nav>
@@ -73,11 +78,9 @@
                                 </table>
                                 <label class="label center-block" style="color: #000; font-size: 25px">Total
                                     Price</label>
-                                <label class="bounceInDown center-block" style="font-size: 20px"
-                                       id="total-price">10</label>
-                                <a onclick="resetOrder()" class="btn btn-danger pull-left" role="button">Reset Order</a>
-                                <a onclick="onOrder({{ maxId }});" class="btn btn-info pull-right" role="button">Finish{{ maxId }}
-                                    Order</a>
+                                <label class="bounceInDown center-block" style="font-size: 20px"><strong id="total-price">0</strong><small> €</small></label>
+                                <a onclick="resetOrder({{ maxId }})" class="btn btn-danger pull-left" role="button">Reset Order</a>
+                                <a onclick="onOrder({{ maxId }});" data-toggle="modal" data-target="#addList" class="btn btn-info pull-right" role="button">Finish Order</a>
                             </div>
                         </div>
                     </div>
@@ -101,7 +104,10 @@
                                                     <div id="checkboxes" style="text-align: left">
                                                         {% for module in data2[subcategories.id] %}
                                                         <input type="checkbox" onclick="onCheckBox({{ module.price }}, {{ module.id }})" name="rGroup" value="1" id="mod{{ module.id }}"/>
-                                                        <label class="whatever" for="mod{{ module.id }}">Modulis</label>
+                                                        <label class="whatever" for="mod{{ module.id }}">
+                                                            <img src="{{ asset('uploads/products/' ~ module.img) }}" style="width: 100%" \>
+                                                            {{ module.name }}
+                                                        </label>
                                                         {% endfor %}
                                                     </div>
                                                 </div>
@@ -111,16 +117,16 @@
                                     </div>
                                     <div class="row">
                                         {% if cats | length == cat.id %}
-                                            <a onclick="nextCat({{ cat.id }})" class="btn btn-info pull-right"
-                                               style="margin-right: 20px" role="button">Order Website</a>
+                                            <a onclick="onOrder({{ maxId }});" data-toggle="modal" data-target="#addList" class="btn btn-info pull-right"
+                                               style="margin: 20px" role="button">Finish Order</a>
                                         {% else %}
                                             <a onclick="nextCat({{ cat.id }});" class="btn btn-info pull-right"
-                                               style="margin-right: 20px" role="button">Next</a>
+                                               style="margin: 20px" role="button">Next</a>
                                         {% endif %}
                                     </div>
-                                    {{ form_start(form) }}
-                                    {{ form_widget(form) }}
-                                    {{ form_end(form) }}
+                                    {#{{ form_start(form) }}#}
+                                    {#{{ form_widget(form) }}#}
+                                    {#{{ form_end(form) }}#}
                                 </div>
                             </div>
                         </div>
@@ -130,17 +136,53 @@
         </div>    <!-- block-content -->
     </div>    <!-- content-block -->
 
+    <div class="modal fade" id="addList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Confirm Order</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                            {#{{ form_row(form.dateCreated, {'attr': {'class': 'form-control', 'id': 'form_date'}}) }}#}
+                            {{ form_row(form.orderItems, {'attr': {'class': 'form-control', 'id': 'form_items'}}) }}
+                            {{ form_row(form.orderPrice, {'attr': {'class': 'form-control', 'id': 'form_price'}}) }}
+
+                                <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
+
+                        {{ form_end(form) }}
+
+                    </div>
+                {% else %}
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">You aren't' logged in!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>To continue shopping, please log in:</label>
+                        <button type="submit" onclick="location.href='/login';" class="btn btn-primary btn-block btn-flat">Login</button>
+                        <label>If you don't have account yet, press register button:</label>
+                        <button type="submit" onclick="location.href='/register';" class="btn btn-primary btn-block btn-flat">Register</button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
 
 {% block scripts %}
 
     <style>
         .whatever {
-            background-color: red;
+            background-color: #a5a5a5;
             display: inline-block;
-            margin-top: -90px;
-            width: 100px;
-            height: 100px;
+             margin-top: -15px;
+            padding: 5px;
+            width: 137px;
+            height: 137px;
         }
 
         #checkboxes input[type=checkbox] {
@@ -198,8 +240,15 @@
                     }
                 }
             }
-            var x1 = document.getElementById('total-price');
-            x1.innerHTML = order.toString();
+            var x0 = document.getElementById('total-price');
+            var x1 = document.getElementById('shop_orderPrice');
+            var x2 = document.getElementById('shop_dateCreated');
+            var x3 = document.getElementById('shop_orderItems');
+            x3.value = order.toString();
+            x1.value = x0.innerHTML;
+
+            var d = new Date();
+            x2.value = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDay()
         }
 
         function addPrice(price) {
@@ -209,9 +258,14 @@
             x1.innerHTML = newPrice;
         }
 
-        function resetOrder() {
-            var x1 = document.getElementById('total-price');
-            x1.innerHTML = 0;
+        function resetOrder(id) {
+//            var x1 = document.getElementById('total-price');
+//            x1.innerHTML = 0;
+//            for(var i = 0; i <= id; i++){
+//                var x = document.getElementById('mod' + i);
+//                x.checked = false;
+//            }
+            location.reload();
         }
 
     </script>

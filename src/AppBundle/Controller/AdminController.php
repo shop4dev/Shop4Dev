@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AdminController extends Controller
 {
     /**
-     * @Route("/product", name="product")
+     * @Route("/", name="product")
      */
     public function adminAction()
     {

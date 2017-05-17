@@ -1,0 +1,110 @@
+{% extends 'main/base.html.twig' %}
+{% use 'main/footer.html.twig' %}
+
+{% block title %}
+
+    Shop4Website
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="content-block" id="header">
+        <div id="overlay-1">
+            <header id="site-header" class="clearfix">
+                <div class="pull-left">
+                    <h1><a href="/" style="font-family: sans-serif">Shop4Dev</a></h1>
+                </div>
+                <div class="pull-right">
+                    <nav class="navbar site-nav" role="navigation">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target="#bs-example-navbar-collapse-1">
+                                <i class="fa fa-bars fa-2x"></i>
+                            </button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="/#header"><i class="fa fa-home"></i> <span>Home</span></a>
+                                </li>
+                                <li><a href="/#portfolio"><i class="fa fa-bookmark"></i> Portfolio</a></li>
+                                <li><a href="/#services"><i class="fa fa-bullhorn"></i> About Us</a></li>
+                                {#<li><a href="#testimonials"><i class="fa fa-thumbs-up"></i> Tetimonials</a></li>#}
+                                <li><a href="/#testimonials"><i class="fa fa-eur"></i> Pricing</a></li>
+                                <li><a href="/#contact"><i class="fa fa-phone-square"></i> Contact</a></li>
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <li><a href="/user"><i class="fa fa-user"></i> {{ app.user.name }}</a></li>
+                                    <li><a href="/logout"> Logout</a></li>
+                                {% else %}
+                                <li><a href="#" data-toggle="modal" data-target="#addList"><i class="fa fa-user"></i> Client Area</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>  <!-- /.navbar-collapse -->
+                    </nav>
+                </div>
+            </header>    <!-- site-header -->
+
+
+        </div>  <!-- overlay-1 -->
+    </div>  <!-- content-block -->
+
+    <div class="content-block" id="testimonials">
+        <header class="block-heading cleafix text-center" style="margin-bottom: 30px;">
+            <h1 style="font-size: 35px; margin-top: 20px">Client area</h1>
+            <!-- <p>Lorem Ipsum Text</p> -->
+        </header>
+        <div class="block-content text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12" style="padding-right: 0">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Order list</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <table class="table table-striped" style="text-align: left">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Date</th>
+                                        <th>Price</th>
+                                        <th>Orders</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for cart in carts %}
+                                        <tr>
+                                            <th scope="row">{{ cart.id }}</th>
+                                            <td>{{ cart.dateCreated|date('Y-m-d H:i:s') }}</td>
+                                            <td>{{ cart.orderPrice }}</td>
+                                            <td>{{ cart.orderItems }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>    <!-- row -->
+            </div>    <!-- container -->
+        </div>    <!-- block-content -->
+    </div>    <!-- content-block -->
+
+{% endblock %}
+
+{% block scripts %}
+
+
+
+    <script src="{{ asset('main/js/jquery-2.1.3.min.js') }}"></script>
+    <script src="{{ asset('main/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('main/js/jquery.actual.min.js') }}"></script>
+
+{% endblock %}

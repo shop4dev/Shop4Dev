@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class ShopController extends Controller
 {
     /**
-     * @Route("/shop", name="shop")
+     * @Route("/shop", name="welcome")
      */
     public function listAction(Request $request)
     {
@@ -45,6 +45,19 @@ class ShopController extends Controller
         $cart = new Cart();
         $form = $this->createForm(ShopType::class, $cart);
         $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $cart->setUser($this->getUser());
+            $time = new \DateTime();
+            $cart->setDateCreated($time);
+            // Save
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($cart);
+            $em->flush();
+
+            return $this->redirectToRoute('user');
+        }
 
         return $this->render('main/shop.html.twig', array(
             'data' => $subcategories,
